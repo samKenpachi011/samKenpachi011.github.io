@@ -1,0 +1,34 @@
+
+<div class="my-thoughts-section text-white mt-6">
+  <h2 class="text-white mb-2" style="font-weight: 700; letter-spacing: -0.5px;">Reading List</h2>
+      <span class="post-count-badge" style="background: rgba(255, 255, 255, 0.15); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; backdrop-filter: blur(5px);">
+      {{ site.data.articles | size }} links
+    </span>
+  <p class="f4 mb-4 text-white opacity-75">External articles and resources I recommend.</p>
+
+  <div class="bento-card" style="background-color: rgba(255, 255, 255, 0.1); backdrop-filter: blur(5px); border-radius: 16px; padding: 2rem; border: 1px solid rgba(255,255,255,0.1);">
+
+    <ul class="article-list-external" style="list-style: none; padding: 0; margin: 0;">
+
+
+      {% if site.data.articles %}
+        {% for article in site.data.articles %}
+          <li style="margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1.5rem;">
+            <a href="{{ article.url }}" target="_blank" rel="noopener noreferrer" class="d-block text-decoration-none" style="color: white; transition: transform 0.2s;">
+              <h3 style="margin: 0 0 0.5rem 0; font-size: 1.25rem; font-weight: 600;">{{ article.title }}</h3>
+              <p style="margin: 0 0 0.5rem 0; opacity: 0.8; line-height: 1.6;">{{ article.description }}</p>
+              <span style="font-size: 0.85rem; opacity: 0.6; text-transform: uppercase; letter-spacing: 1px;">{{ article.source }}</span>
+            </a>
+          </li>
+        {% endfor %}
+
+
+      {% else %}
+        <li style="margin-bottom: 1.5rem;">
+          <p style="opacity: 0.8;">I'm currently curating my reading list. Check back soon!</p>
+        </li>
+      {% endif %}
+
+    </ul>
+  </div>
+</div>

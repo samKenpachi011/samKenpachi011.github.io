@@ -1,0 +1,13 @@
+- title: "Tshameka"
+  description: "A game platform centered on culture and learning, designed to make education engaging through interactive storytelling."
+  image: "/assets/images/Cover6.jpeg"
+  live_url: "https://tshameka.onrender.com/"
+  # github_url: ""
+  tech_stack: ["TypeScript","NextJS", "PostHog", "Supabase"]
+
+- title: "LeoKwane"
+  description: "A global fuel overview dashboard analyzing data trends and their specific impact on Botswana's economy and logistics."
+  image: "/assets/images/leokwane.png"
+  live_url: "https://fuely-app-latest.onrender.com/"
+  # github_url: ""
+  tech_stack: ["Python", "FastAPI", "StreamLit"]

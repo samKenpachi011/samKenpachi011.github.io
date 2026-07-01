@@ -1,2 +1,57 @@
-  </body>
-</html>
+
+{% assign display_sub_bio = "Software/Data/Creative Engineer • Indie Developer • Product Designer" %}
+<footer class="site-footer h-card " id="footer-section">
+  <data class="u-url" href="{{ "/" | relative_url }}"></data>
+
+  <div class="wrapper">
+
+  {% unless page.include_subscribe == false %}
+  <style>
+    .site-border-block {
+      border-bottom: 1px solid #e8e8e8;
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+    }
+  </style>
+
+  <div class="subscribe-block">
+  <h3 class="subscribe-block__title">Stay in the loop</h3>
+  <p class="subscribe-block__desc">Get notified every time I learn something new and ship a project.</p>
+
+  <form action="https://formspree.io/f/mnjkbgeg" method="POST" class="subscribe-form">
+    <!-- Honeypot for spam protection (hidden from users) -->
+    <input type="text" name="_gotcha" style="display:none">
+
+    <div class="subscribe-form__group">
+      <input type="text" name="first_name" placeholder="First Name" class="subscribe-form__input" required>
+      <input type="email" name="email" placeholder="Email Address" class="subscribe-form__input" required>
+    </div>
+
+    <button type="submit" class="subscribe-form__btn">
+      Subscribe {% octicon mail height:16 %}
+    </button>
+  </form>
+</div>
+  {% endunless %}
+
+    <div class="footer-col-wrapper">
+
+
+        <div style="margin-top: 10px; font-size: var(--template-body-font-size); font-weight: 400; line-height: 1.5; color: rgb(16, 16, 16); width: 100%; min-width: 0px; overflow-wrap: anywhere; word-break: break-word; text-align: center;">
+          <p style="margin: 0px; line-height: 1.6; max-width: 100%; overflow-wrap: anywhere; word-break: break-word;">
+          {{display_sub_bio}}
+        </p></div>
+
+
+        {%- include socials.html -%}
+
+
+
+        {%- include sub-footer.html -%}
+
+
+    </div>
+
+  </div>
+
+</footer>

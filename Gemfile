@@ -3,3 +3,9 @@ gem 'github-pages', group: :jekyll_plugins
 gem "jekyll-github-metadata"
 gem "jekyll-octicons"
 gem "jemoji"
+
+gem 'fiddle'
+gem 'faraday-retry'
+# group :jekyll_plugins do
+#   gem "jekyll-feed", "~> 0.6"
+# end

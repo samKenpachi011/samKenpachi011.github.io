@@ -1,0 +1,66 @@
+<section id="github-projects" class="github-projects-section mt-6">
+  <h2 class="text-white mb-2" style="font-weight: 700; letter-spacing: -0.5px;">
+    My Projects
+
+    {% if site.github.public_repositories %}
+    <span class="post-count-badge" style="background: rgba(255, 255, 255, 0.15); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; backdrop-filter: blur(5px); margin-left: 10px;">
+      {{ site.github.public_repositories | size }} Repos
+    </span>
+          {% else %}
+  <div class="bento-item">
+    <span class="post-count-badge" style="background: rgba(255, 255, 255, 0.15); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; backdrop-filter: blur(5px); margin-left: 10px;">
+     0 Repos
+    </span>  </div>
+{% endif %}
+  </h2>
+  <p class="f4 mb-4 text-white opacity-75">Open source repositories I've built and contributed to.</p>
+
+  <div class="projects-grid">
+    {% assign sort_order = 'pushed_at' %}
+    {% if site.projects.sort_by == 'stars' %}
+      {% assign sort_order = 'stargazers_count' %}
+    {% endif %}
+
+    {% assign repos = site.github.public_repositories %}
+
+    {% if site.projects.exclude.archived %}
+      {% assign repos = repos | where: 'archived', false %}
+    {% endif %}
+
+    {% if site.projects.exclude.forks %}
+      {% assign repos = repos | where: 'fork', false %}
+    {% endif %}
+
+    <!-- {% assign sorted_repos = repos | sort: sort_order | reverse %} -->
+    {% assign sorted_repos = repos %}
+
+    {% for repo in sorted_repos limit: site.projects.limit %}
+      {% unless site.projects.exclude.projects contains repo.name %}
+
+        <a href="{{ repo.html_url }}" target="_blank" class="repo-card">
+          <div class="repo-card__header">
+            <h3 class="repo-card__title">{{ repo.name }}</h3>
+            {% octicon mark-github height:18 class:"repo-card__icon" %}
+          </div>
+
+          <p class="repo-card__desc">
+            {{ repo.description | default: "No description provided." }}
+          </p>
+
+          <div class="repo-card__footer">
+            {% if repo.language %}
+              <span class="repo-card__lang">
+                <span class="repo-card__lang-dot"></span> {{ repo.language }}
+              </span>
+            {% endif %}
+            <div class="repo-card__stats">
+              <span class="repo-card__stat">{% octicon star height:14 %} {{ repo.stargazers_count }}</span>
+              <span class="repo-card__stat">{% octicon repo-forked height:14 %} {{ repo.forks_count }}</span>
+            </div>
+          </div>
+        </a>
+
+      {% endunless %}
+    {% endfor %}
+  </div>
+</section>

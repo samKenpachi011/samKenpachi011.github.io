@@ -1,13 +1,19 @@
 {% if site.style == 'dark' %}
   {% assign icon_color = "#ffffff" %}
+  {% assign nav_bg = "#24292e" %}
+  {% assign text_color = "text-white" %}
+  {% assign header_bg = "rgba(30, 30, 30, 0.6)" %}
+  {% assign header_color = "#ffffff" %}
 {% else %}
   {% assign icon_color = "#24292e" %}
+  {% assign nav_bg = "#ffffff" %}
+  {% assign text_color = "text-gray-dark" %}
+  {% assign header_bg = "rgba(255, 255, 255, 0.6)" %}
+  {% assign header_color = "rgb(25, 10, 38)" %}
 {% endif %}
 
 {% assign content = page.content %}
-
 {% assign posts_total = site.posts | size %}
-
 {% assign user = site.github.owner %}
 
 {% if page.path contains '_posts' %}
@@ -28,6 +34,241 @@
     <meta property="og:image" content="{{ user.avatar_url }}" />
     <meta property="og:description" content="{{ meta_description }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="{{ "/assets/styles.css" | relative_url }}" rel="stylesheet" type="text/css">
+    <link href="{{ '/assets/styles.css' | relative_url }}" rel="stylesheet" type="text/css">
+
+    <style>
+      /* Floating Header Layout Rules */
+      .site-header-layout div {
+          display: block;
+          unicode-bidi: isolate;
+      }
+      .site-header-shell--hero-home, .site-header-shell--hero {
+          position: sticky;
+          top: 24px;
+          height: 0px;
+          margin-bottom: 0px;
+          padding-top: 0px;
+          z-index: 24;
+          pointer-events: none;
+
+      }
+
+      /* Header Core Glassmorphism Styles */
+      .site-header {
+          pointer-events: auto;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 12px 28px;
+          max-width: 800px;
+          margin: 0 auto;
+          backdrop-filter: blur(16px);
+          -webkit-backdrop-filter: blur(16px);
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+          font-size: var(--header-font-size, 15px);
+          transition: all 0.3s ease;
+      }
+
+      .site-header__nav {
+          display: flex;
+          gap: 24px;
+      }
+
+      .site-header__nav a {
+          text-decoration: none;
+          font-weight: 500;
+          transition: opacity 0.2s;
+          color: inherit;
+      }
+
+      .site-header__nav a:hover {
+          opacity: 0.7;
+      }
+
+      .site-header__cta2 {
+          text-decoration: none;
+          font-weight: 600;
+          padding: 8px 20px;
+          border-radius: 24px;
+          background: rgba(0, 0, 0, 0.05);
+          transition: background 0.2s;
+          color: inherit;
+      }
+      .site-header__cta {
+        pointer-events: auto;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 38px;
+        padding: 0 16px;
+        border-radius: var(--template-control-radius, 12px);
+        background: var(--template-control-bg, #fff);
+        border: 1px solid var(--template-control-border, var(--color-card-border));
+        box-shadow: var(--template-control-shadow, none);
+        color: var(--template-control-color, var(--color-text));
+        text-decoration: none;
+        font-size: var(--header-font-size, 13px);
+        font-weight: 700;
+        white-space: nowrap;
+      }
+
+      .site-header__cta:hover {
+          background: rgba(0, 0, 0, 0.1);
+      }
+      .site-header__cta:hover {
+          background: rgba(255, 255, 255, 0.25);
+      }
+      /* Mobile responsiveness */
+      @media (max-width: 600px) {
+          .site-header-shell--hero-home {
+              top: 12px;
+              padding: 0 12px;
+          }
+          .site-header {
+              flex-direction: column;
+              gap: 12px;
+              padding: 16px 20px;
+              max-width: 100%;
+          }
+          .site-header__nav {
+              gap: 16px;
+              flex-wrap: wrap;
+              justify-content: center;
+              font-size:14px
+          }
+      }
+  /* =========================================
+   Mobile Burger Menu
+   ========================================= */
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 101;
+
+  span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: currentColor;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  &.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+  &.active span:nth-child(2) { opacity: 0; }
+  &.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+}
+
+@media (max-width: 768px) {
+  .mobile-menu-toggle {
+    display: flex;
+  }
+
+  .site-header__nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 0 0 24px 24px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    margin-top: 12px;
+
+    &.active {
+      display: flex;
+    }
+
+    a {
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      text-align: center;
+
+      &:last-child { border-bottom: none; }
+    }
+  }
+
+
+
+}
+    </style>
   </head>
   <body class="bg-white min-height-full" {% if site.style == 'dark' %}style="background-color: #2f363d !important"{% endif %}>
+    <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="site-header-shell--hero-home">
+      <div class="site-header site-header--split site-header--blur site-header--fit" style="gap: 41px; border-radius: 44px; background: {{ header_bg }}; border: 1px solid rgba(255, 255, 255, 0.2); color: {{ header_color }}; --header-font-size: 17px;">
+        <nav class="site-header__nav" id="site-nav">
+          <a href="{{ site.baseurl }}/">Home</a>
+          <a href="{{ site.baseurl }}/projects">Experimental Projects</a>
+          <a href="{{ site.baseurl }}/blog-post/">Blog</a>
+          <a href="{{ site.baseurl }}/articles">Articles</a>
+        </nav>
+
+    <button class="site-header__cta" id="open-contact-modal">
+      Contact
+    </button>
+      </div>
+    </div>
+
+
+{%include contact-modal.html%}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+
+    const menuToggle = document.getElementById('mobile-menu-toggle');
+    const siteNav = document.getElementById('site-nav');
+
+    if (menuToggle && siteNav) {
+      menuToggle.addEventListener('click', () => {
+        menuToggle.classList.toggle('active');
+        siteNav.classList.toggle('active');
+      });
+    }
+
+
+    const openModalBtn = document.getElementById('open-contact-modal');
+    const closeModalBtn = document.getElementById('close-contact-modal');
+    const contactModal = document.getElementById('contact-modal');
+    const modalBackdrop = document.getElementById('modal-backdrop');
+
+    function openModal() {
+      if (contactModal && modalBackdrop) {
+        contactModal.classList.add('active');
+        modalBackdrop.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeModal() {
+      if (contactModal && modalBackdrop) {
+        contactModal.classList.remove('active');
+        modalBackdrop.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+
+    if (openModalBtn) openModalBtn.addEventListener('click', openModal);
+    if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+    if (modalBackdrop) modalBackdrop.addEventListener('click', closeModal);
+  });
+</script>
+
+  </body>
+</html>

@@ -1,43 +1,46 @@
+
+title: Sam Kenpachi
 description: >-
   This is where I share anything I learn about life, development , devops and general tech.
 author: ''
 url: "https://samKenpachi011.github.io"
-
+# timezone: Africa/Windhoek
 show_excerpts: true
 permalink: /:categories/:title
 
 # Social
+twitter_username: samuel_kabelo
+linkedin_username: samuel kabelo
 github_username: samKenpachi011
 rss: rss
 
-# Disqus comments
-disqus:
-  shortname: ndench
-
-header_pages: 
+header_pages:
   - links.md
   - subscriptions.md
   - blogs.md
+  - articles.md
 
 # Build settings
 markdown: kramdown
 theme: minima
 plugins:
-  - jekyll-octicons
-  - jekyll-github-metadata
-  - jemoji
   - jekyll-feed
+  - jekyll-github-metadata
   - jekyll-sitemap
   - jekyll-redirect-from
   - jekyll-seo-tag
+  - jekyll-octicons
 
 defaults:
-  -
-    scope:
-      path: "" # an empty string here means all files in the project
-      type: "posts"
+  - scope:
+      path: ""
+      type: "blog-post"
     values:
-      layout: "post"
+      layout: post
+  - scope:
+      path: _drafts
+    values:
+      layout: post
       comments: false
 
 # Build drafts
@@ -45,32 +48,35 @@ collections:
   drafts:
     output: true
     permalink: /drafts/:path/
-      
-# projects:
-#   sort_by: pushed
-#   # sort_by options:
-#   #   - pushed
-#   #   - stars
-#   limit: 12
-#   exclude:
-#     archived: true
-#     forks: true
-#     projects:
-#     # - repo-name
+
+  # External Stories Collection
+  external_stories:
+    output: true
+    permalink: /stories/:title/
+# Projects
+projects:
+  sort_by: pushed
+  sort_by options:
+    - pushed
+    - stars
+  limit: 12
+  exclude:
+    archived: true
+    forks: true
+    projects:
+    # - repo-name
 
 # topics:
 #   - name: JavaScript
 #     web_url: https://github.com/topics/javascript
 #     image_url: https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/javascript/javascript.png
-    
+
 #   - name: FLUTTER
 #     web_url: https://github.com/topics/flutter
 #     image_url: https://raw.githubusercontent.com/github/explore/cebd63002168a05a6a642f309227eefeccd92950/topics/flutter/flutter.png
-    
+
 #   - name: Python
 #     web_url: https://github.com/topics/python
 #     image_url: https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/python/python.png
-    
- 
 
-
+# github: [metadata]

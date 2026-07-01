@@ -1,0 +1,44 @@
+<!-- _includes/featured-projects.html -->
+<div id="featured-projects" class="featured-projects-wrapper mt-6">
+  <h2 class="text-white mb-2" style="font-weight: 700; letter-spacing: -0.5px;">Featured Projects</h2>
+  <p class="f4 mb-4 text-white opacity-75">Things I've built and shipped.</p>
+
+  {% for project in site.data.featured_projects %}
+    <article class="featured-project-layout">
+
+      <!-- Info Stack (Left Side) -->
+      <div class="project-info-stack">
+        <h3 class="project-title">{{ project.title }}</h3>
+        <p class="project-description">{{ project.description }}</p>
+
+        {% if project.tech_stack %}
+          <div class="tech-tags">
+            {% for tech in project.tech_stack %}
+              <span class="tech-tag">{{ tech }}</span>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        <div class="project-links">
+          {% if project.live_url %}
+            <a href="{{ project.live_url }}" target="_blank" class="project-link-btn">
+              View Live Site
+            </a>
+          {% endif %}
+
+          {% if project.github_url %}
+            <a href="{{ project.github_url }}" target="_blank" class="project-link-btn project-link-btn--secondary">
+              View Source Code
+            </a>
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- Image Stack (Right Side) -->
+      <div class="project-image-stack">
+        <img src="{{ project.image }}" alt="{{ project.title }}" loading="lazy">
+      </div>
+
+    </article>
+  {% endfor %}
+</div>

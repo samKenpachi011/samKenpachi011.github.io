@@ -1,0 +1,10 @@
+- title: "BREAKING DOWN DOCKER IMAGES"
+  url: "https://medium.com/@faruk13/alpine-slim-bullseye-bookworm-noble-differences-in-docker-images-explained-d9aa6efa23ec"
+  source: Medium
+  description: "Differences in Docker Images Explained"
+
+
+- title: "Zero ETL"
+  url: "https://www.linkedin.com/posts/pooja-jain-898253106_data-engineering-share-7442062788375699456-9Tu8/"
+  source: LinkedIn
+  description: "Logic shifts closer to where data is used (views, not pipelines) Less waiting. Less patching."
